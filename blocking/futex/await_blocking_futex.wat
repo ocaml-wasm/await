@@ -1,4 +1,11 @@
 (module
+   (@string_imports "str")
+   (@string_type $string)
+(@if $use_js_string
+(@then
+   (type $string (struct (field externref))))
+(@else
+   (type $string (array (mut i8)))))
    (import "env" "caml_raise_sys_error" (func $caml_raise_sys_error (param (ref eq))))
 
    (type $bytes (array (mut i8)))
